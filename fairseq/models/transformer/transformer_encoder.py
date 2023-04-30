@@ -120,8 +120,9 @@ class TransformerEncoderBase(FairseqEncoder):
         self, src_tokens, token_embedding: Optional[torch.Tensor] = None
     ):
         # embed tokens and positions
-        if token_embedding is None:
-            token_embedding = self.embed_tokens(src_tokens)
+        # if token_embedding is None:
+        #     token_embedding = self.embed_tokens(src_tokens)
+        assert token_embedding is not None
         x = embed = self.embed_scale * token_embedding
         if self.embed_positions is not None:
             x = embed + self.embed_positions(src_tokens)
